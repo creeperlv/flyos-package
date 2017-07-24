@@ -1,8 +1,0 @@
-NAME="FlyOS Linux"
-PRETTY_NAME="FlyOS Linux"
-ID=flyos
-ID_LIKE=flyos
-ANSI_COLOR="0;36"
-HOME_URL="http://www.fly-os.xyz/"
-SUPPORT_URL="http://bbs.fly-os.xyz/"
-
