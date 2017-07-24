@@ -1,0 +1,84 @@
+# Maintainer: FlyOS <1377195627@qq.com>
+pkgname=flyos-default-settings
+pkgver=0.0.7
+pkgrel=1
+epoch=0
+pkgdesc="FlyOS默认设置"
+arch=("x86_64")
+url="www.fly-os.xyz"
+license=('GPL')
+groups=()
+depends=("deepin-account-faces"
+	"deepin-api"
+	"deepin-artwork-themes"
+	"deepin-calendar"
+	"deepin-clutter"
+	"deepin-cogl"
+	"deepin-control-center"
+	"deepin-daemon"
+	"deepin-desktop-base"
+	"deepin-desktop-schemas"
+	"deepin-dock"
+	"deepin-file-manager"
+	"deepin-grub2-themes"
+	"deepin-gtk-theme"
+	"deepin-help"
+	"deepin-icon-theme"
+	"deepin-image-viewer"
+	"deepin-launcher"
+	"deepin-manual"
+	"deepin-menu"
+	"deepin-metacity"
+	"deepin-movie"
+	"deepin-music"
+	"deepin-mutter"
+	"deepin-notifications"
+	"deepin-polkit-agent"
+	"deepin-qml-widgets"
+	"deepin-qt-dbus-factory"
+	"deepin-qt5integration"
+	"deepin-screen-recorder"
+	"deepin-screenshot"
+	"deepin-session-ui"
+	"deepin-shortcut-viewer"
+	"deepin-sound-theme"
+	"deepin-terminal"
+	"deepin-tool-kit"
+	"deepin-voice-recorder"
+	"deepin-wallpapers"
+	"deepin-wm"
+	"deepin-wm-switcher"
+	"startdde"
+	"deepin-miraclecast"
+	"octopi"
+	"ntfs-3g"
+	"gtk-engine-murrine"
+	"ttf-deepin-opensymbol"
+	"flyos-topbar")
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install='font.install'
+changelog=
+source=()
+noextract=()
+md5sums=()
+validpgpkeys=()
+
+package() {
+    mkdir -p "${pkgdir}/etc/fonts/conf.avail"
+	mkdir -p "${pkgdir}/etc/X11/xorg.conf.d"
+	mkdir -p "${pkgdir}/usr/share/applications"
+    install -m=644 ${srcdir}/etc/X11/xorg.conf.d/50-synaptics.conf "${pkgdir}/etc/X11/xorg.conf.d"
+    install -m=644 ${srcdir}/etc/fonts/conf.avail/10-enhance-rending.conf "${pkgdir}/etc/fonts/conf.avail"
+    install -m=644 ${srcdir}/etc/fonts/conf.avail/15-assign-lang-en.conf "${pkgdir}/etc/fonts/conf.avail"
+    install -m=644 ${srcdir}/etc/fonts/conf.avail/55-language-flyos-zh-cn.conf "${pkgdir}/etc/fonts/conf.avail"
+    install -m=644 ${srcdir}/etc/fonts/conf.avail/55-language-flyos-zh-hk.conf "${pkgdir}/etc/fonts/conf.avail"
+    install -m=644 ${srcdir}/etc/fonts/conf.avail/55-language-flyos-zh-tw.conf "${pkgdir}/etc/fonts/conf.avail"
+	install -m=644 ${srcdir}/usr.share.d/applications/mimeapps.list ${pkgdir}/usr/share/applications
+}

@@ -1,0 +1,49 @@
+diff --git a/modules/systeminfo/systeminfowidget.cpp b/modules/systeminfo/systeminfowidget.cpp
+index e0b8fc8..d25d27f 100644
+--- a/modules/systeminfo/systeminfowidget.cpp
++++ b/modules/systeminfo/systeminfowidget.cpp
+@@ -49,7 +49,7 @@ SystemInfoWidget::SystemInfoWidget(SystemInfoModel* model)
+     SettingsGroup* bootGroup = new SettingsGroup();
+ 
+     LogoItem* logo = new LogoItem;
+-    logo->setDescription(systemCopyright());
++    logo->setDescription(tr("为不折腾/图形化折腾而生"));
+     logo->setLogo(systemLogo());
+ 
+     m_distroid = new TitleValueItem();
+@@ -58,12 +58,14 @@ SystemInfoWidget::SystemInfoWidget(SystemInfoModel* model)
+     m_distroid->setVisible(false);
+ 
+     m_distrover = new TitleValueItem();
+-    m_distrover->setTitle(tr("Distribution Release:"));
+-    m_distrover->setValue(m_model->distrover());
++    //m_distrover->setTitle(tr("Distribution Release:"));
++    //m_distrover->setValue(m_model->distrover());
++    m_distrover->setTitle(tr("桌面环境:"));
++    m_distrover->setValue(tr("DDE"));
+     m_distrover->setVisible(false);
+ 
+     m_version = new TitleValueItem();
+-    m_version->setTitle(tr("Edition License:"));
++    m_version->setTitle(tr("DDE版本协议:"));
+     m_version->setValue(m_model->version());
+ 
+     m_type = new TitleValueItem();
+@@ -111,7 +113,7 @@ SystemInfoWidget::SystemInfoWidget(SystemInfoModel* model)
+     connect(m_boot, SIGNAL(clicked()), this, SIGNAL(boot()));
+ #endif
+     connect(m_model, SIGNAL(distroidChanged(QString)), this, SLOT(setDistroID(QString)));
+-    connect(m_model, SIGNAL(distroverChanged(QString)), this, SLOT(setDistroVer(QString)));
++    //connect(m_model, SIGNAL(distroverChanged(QString)), this, SLOT(setDistroVer(QString)));
+     connect(m_model, SIGNAL(versionChanged(QString)), this, SLOT(setEdition(QString)));
+     connect(m_model, SIGNAL(typeChanged(QString)), this, SLOT(setType(QString)));
+     connect(m_model, SIGNAL(processorChanged(QString)), this, SLOT(setProcessor(QString)));
+@@ -137,7 +139,7 @@ void SystemInfoWidget::setDistroID(const QString &distroid)
+ 
+ void SystemInfoWidget::setDistroVer(const QString &distrover)
+ {
+-    m_distrover->setValue(distrover);
++    //m_distrover->setValue(distrover);
+ }
+ 
+ void SystemInfoWidget::setEdition(const QString &edition)

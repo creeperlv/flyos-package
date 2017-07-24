@@ -1,0 +1,29 @@
+# $Id$
+# Maintainer: FlyOS <1377195627@qq.com>
+
+pkgname=deepin-miraclecast
+pkgver=1
+pkgrel=2
+pkgdesc='deepin-miraclecast无线投屏'
+arch=('x86_64')
+url="http://github.com/linuxdeepin/miraclecast"
+license=('GPL3')
+depends=("vala")
+makedepends=("cmake")
+conflicts=()
+replaces=()
+groups=('deepin')
+source=()
+sha512sums=()
+
+build() {
+  mkdir -p dde-miraclecast-$pkgver
+  cd dde-miraclecast-$pkgver
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ../
+  make
+}
+
+package() {
+  cd dde-miraclecast-$pkgver
+  make DESTDIR="$pkgdir" install
+}

@@ -1,0 +1,23 @@
+post_install() {
+	ln -sf /etc/fonts/conf.avail/10-enhance-rending.conf /etc/fonts/conf.d/10-enhance-rending.conf
+	ln -sf /etc/fonts/conf.avail/15-assign-lang-en.conf /etc/fonts/conf.d/15-assign-lang-en.conf
+	ln -sf /etc/fonts/conf.avail/55-language-flyos-zh-cn.conf /etc/fonts/conf.d/55-language-flyos-zh-cn.conf
+	ln -sf /etc/fonts/conf.avail/55-language-flyos-zh-hk.conf /etc/fonts/conf.d/55-language-flyos-zh-hk.conf
+	ln -sf /etc/fonts/conf.avail/55-language-flyos-zh-tw.conf /etc/fonts/conf.d/55-language-flyos-zh-tw.conf
+}
+
+post_upgrade(){
+	ln -sf /etc/fonts/conf.avail/10-enhance-rending.conf /etc/fonts/conf.d/10-enhance-rending.conf
+	ln -sf /etc/fonts/conf.avail/15-assign-lang-en.conf /etc/fonts/conf.d/15-assign-lang-en.conf
+	ln -sf /etc/fonts/conf.avail/55-language-flyos-zh-cn.conf /etc/fonts/conf.d/55-language-flyos-zh-cn.conf
+	ln -sf /etc/fonts/conf.avail/55-language-flyos-zh-hk.conf /etc/fonts/conf.d/55-language-flyos-zh-hk.conf
+	ln -sf /etc/fonts/conf.avail/55-language-flyos-zh-tw.conf /etc/fonts/conf.d/55-language-flyos-zh-tw.conf
+}
+
+pre_remove(){
+	rm /etc/fonts/conf.d/10-enhance-rending.conf
+	rm /etc/fonts/conf.d/15-assign-lang-en.conf
+	rm /etc/fonts/conf.d/55-language-flyos-zh-cn.conf
+	rm /etc/fonts/conf.d/55-language-flyos-zh-hk.conf
+	rm /etc/fonts/conf.d/55-language-flyos-zh-tw.conf
+}

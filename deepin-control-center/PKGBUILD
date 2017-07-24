@@ -1,0 +1,37 @@
+# $Id$
+# Maintainer: FlyOS <1377195627@qq.com>
+# Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
+# Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
+
+pkgname=deepin-control-center
+pkgver=4.2.3
+pkgrel=2
+pkgdesc='New control center for linux deepin'
+arch=('i686' 'x86_64')
+url="http://github.com/linuxdeepin/dde-control-center"
+license=('GPL3')
+depends=('desktop-file-utils' 'deepin-tool-kit' 'deepin-account-faces' 'deepin-api' 'geoip'
+         'geoip-database' 'geoip-database-extra' 'deepin-daemon' 'startdde'
+         'deepin-qt-dbus-factory' 'deepin-qt5integration')
+makedepends=('deepin-dock' 'qt5-tools')
+conflicts=('dde-control-center' 'dde-dock-applets')
+replaces=('dde-control-center' 'dde-dock-applets')
+groups=('deepin')
+source=("$pkgname-$pkgver.tar.gz::http://github.com/linuxdeepin/dde-control-center/archive/$pkgver.tar.gz"
+"patch")
+sha512sums=('SKIP'
+	'SKIP')
+
+build() {
+  mkdir -p dde-control-center-$pkgver
+  cd dde-control-center-$pkgver
+  cp -f /home/linux/Pictures/logo.png modules/systeminfo/themes/dark/icons/logo.png
+  patch -Np1 < "${srcdir}"/patch
+  qmake-qt5 QMAKE_CFLAGS_ISYSTEM= PREFIX=/usr DISABLE_SYS_UPDATE=YES DCC_DISABLE_GRUB=YES QMAKE_CXXFLAGS_RELEASE-="-fno-plt" QMAKE_LFLAGS_RELEASE="${LDFLAGS/,-z,now}"
+  make
+}
+
+package() {
+  cd dde-control-center-$pkgver
+  make INSTALL_ROOT="$pkgdir" install
+}

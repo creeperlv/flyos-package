@@ -1,0 +1,44 @@
+# Maintainer: FlyOS <xiayesuifeng@qq.com>
+pkgname=flyos-topbar
+pkgver=0.1.0
+pkgrel=1
+epoch=0
+pkgdesc="FlyOS标题栏"
+arch=("x86_64")
+url="www.fly-os.xyz"
+license=('GPL')
+groups=()
+depends=("deepin-tool-kit"
+		"qt5-base"	
+		"qt5-svg"
+		"qt5-x11extras"
+		"deepin-dock"
+		"deepin-control-center"
+)
+makedepends=("qt5-tools"
+			"cmake")
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/linuxflyos/flyos-topbar/archive/0.1.0.tar.gz")
+noextract=()
+md5sums=("SKIP")
+validpgpkeys=()
+
+build(){
+	mkdir -p flyos-topbar-$pkgver/build
+	cd flyos-topbar-$pkgver/build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make
+}
+
+package() {
+	cd flyos-topbar-$pkgver/build
+    make install DESTDIR=${pkgdir} PREFIX=/usr
+}
