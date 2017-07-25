@@ -1,11 +1,11 @@
 # $Id$
-# Maintainer: FlyOS <1377195627@qq.com>
+# Maintainer: FlyOS <xiayesuifeng@qq.com>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 # Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
 
 pkgname=deepin-control-center
-pkgver=4.2.3
-pkgrel=2
+pkgver=4.2.5
+pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('i686' 'x86_64')
 url="http://github.com/linuxdeepin/dde-control-center"
