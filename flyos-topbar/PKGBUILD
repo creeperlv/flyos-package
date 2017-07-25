@@ -1,6 +1,6 @@
 # Maintainer: FlyOS <xiayesuifeng@qq.com>
 pkgname=flyos-topbar
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=0
 pkgdesc="FlyOS标题栏"
